@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../auth/login_auth.dart';
 
 class SplashScreenController extends GetxController
     with GetSingleTickerProviderStateMixin {
@@ -16,15 +17,15 @@ class SplashScreenController extends GetxController
   }
 
   animationInitilization() async {
-      Timer(const Duration(seconds: 5), () {
+    Timer(const Duration(seconds: 5), () async {
+      bool authenticated = await Authentication().authentication();
+      if (authenticated != null) {
+        debugPrint('Authentication successful');
+        Get.offAllNamed('/dashboard');
+      } else {
         Get.offAllNamed('/login');
-      // if (accessToken != null) {
-      //   Get.offAndToNamed('/main_layout_screen', arguments: {'index': 0});
-      // } else {
-      //   Get.offAndToNamed('/signin_screen');
-      // }
+      }
     });
     update();
   }
-
 }

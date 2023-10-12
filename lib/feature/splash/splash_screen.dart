@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'splash_controller.dart';
 
@@ -17,7 +18,8 @@ class SplashScreen extends StatelessWidget {
               Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget> [
-                  Image.asset("assets/images/logo.png"),
+                  SvgPicture.asset('assets/svg/flutter-logo.svg'),
+                  // Image.asset("assets/images/logo.png"),
                  
                   const SizedBox(
                     height: 15,
